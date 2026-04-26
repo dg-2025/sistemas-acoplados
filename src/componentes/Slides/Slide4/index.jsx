@@ -14,21 +14,25 @@ export default function Slide4() {
       </div>
       <div className="glass-panel">
         <div className="presenter-badge">Voz: Daniel</div>
-        <h1 className="slide-title">Análise: Fortemente Acoplados</h1>
-        <p className="slide-content" style={{ marginBottom: '1.5rem' }}>O alto grau de dependência gera resultados extremos em desempenho e limitações.</p>
+        <h1 className="slide-title">Análise Técnica: Fortemente Acoplados</h1>
+        <p className="slide-content" style={{ marginBottom: '1.2rem' }}>Uma arquitetura que troca tolerância a falhas por desempenho bruto absoluto.</p>
         
         <div className="gamma-card" style={{ borderColor: 'rgba(0, 255, 136, 0.3)', marginBottom: '1rem' }}>
           <div className="gamma-card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle size={22} /> Vantagens Reais
+            <CheckCircle size={22} /> Vantagens e Aplicações 
           </div>
-          <p className="slide-content">Desempenho bruto excepcional e latência interna quase nula. Ideal para processamento que exige respostas imediatas e onde uma CPU precisa saber o que a outra está fazendo em tempo real.</p>
+          <p className="slide-content" style={{ fontSize: '1.2rem' }}>
+            Acesso a dados praticamente instantâneo. Ideal para cargas de trabalho que exigem intenso sincronismo, como processamento gráfico (Renderização), sistemas bancários in-memory e modelagem científica (simulações meteorológicas).
+          </p>
         </div>
         
         <div className="gamma-card" style={{ borderColor: 'rgba(255, 100, 100, 0.3)' }}>
           <div className="gamma-card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FF6464' }}>
-            <XCircle size={22} /> Desvantagens e Gargalos
+            <XCircle size={22} /> Desvantagens e Limitações 
           </div>
-          <p className="slide-content">Escalabilidade física limitada. Como tudo passa pela mesma memória, adicionar mais processadores gera congestionamento no barramento de dados. Além disso, se a memória falhar, o sistema inteiro trava.</p>
+          <p className="slide-content" style={{ fontSize: '1.2rem' }}>
+            <strong>Baixa escalabilidade física e Ponto Único de Falha (SPOF).</strong> Como todos dependem da mesma memória, um defeito no pente de RAM derruba o sistema inteiro. Além disso, adicionar processadores satura rapidamente o barramento de memória (Gargalo de Von Neumann).
+          </p>
         </div>
       </div>
     </div>

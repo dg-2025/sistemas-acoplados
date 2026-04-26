@@ -4,46 +4,46 @@ export default function Slide8() {
     <div className="slide-container layout-center">
       <div className="glass-panel">
         <div className="presenter-badge">Voz: Pedro</div>
-        <h1 className="slide-title" style={{ textAlign: 'center', marginBottom: '1rem' }}>Tabela Comparativa</h1>
+        <h1 className="slide-title" style={{ textAlign: 'center', marginBottom: '1rem' }}>Sintetização de Características Técnicas </h1>
 
         <table className="comparison-table">
           <thead>
             <tr>
-              <th>Característica</th>
-              <th>Fortemente Acoplado</th>
-              <th>Fracamente Acoplado</th>
+              <th>Parâmetro Acadêmico</th>
+              <th>Fortemente Acoplado </th>
+              <th>Fracamente Acoplado </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ fontSize: '1.5rem' }}>
             <tr>
-              <td data-label="Característica">Memória</td>
-              <td data-label="Fortemente Acoplado">Compartilhada (Global)</td>
-              <td data-label="Fracamente Acoplado">Local e Distribuída (Privada)</td>
+              <td data-label="Parâmetro Acadêmico">Organização da Memória</td>
+              <td data-label="Fortemente Acoplado">Espaço Unificado (Global)</td>
+              <td data-label="Fracamente Acoplado">Local e Privada (por Nó)</td>
             </tr>
             <tr>
-              <td data-label="Característica">Comunicação</td>
-              <td data-label="Fortemente Acoplado">Barramentos na Placa-mãe</td>
-              <td data-label="Fracamente Acoplado">Mensagens via Rede Externa</td>
+              <td data-label="Parâmetro Acadêmico">Meio de Comunicação</td>
+              <td data-label="Fortemente Acoplado">Barramento Interno (Ex: QPI, DDR)</td>
+              <td data-label="Fracamente Acoplado">Message Passing via Rede (TCP, MPI)</td>
             </tr>
             <tr>
-              <td data-label="Característica">Latência (Atraso)</td>
-              <td data-label="Fortemente Acoplado">Quase Nula</td>
-              <td data-label="Fracamente Acoplado">Alta (Depende da Rede)</td>
+              <td data-label="Parâmetro Acadêmico">Sobrecarga de Latência</td>
+              <td data-label="Fortemente Acoplado">Baixíssima (~Nanossegundos)</td>
+              <td data-label="Fracamente Acoplado">Elevada (~Milissegundos)</td>
             </tr>
             <tr>
-              <td data-label="Característica">Escalabilidade</td>
-              <td data-label="Fortemente Acoplado">Limitada (Custosa)</td>
-              <td data-label="Fracamente Acoplado">Praticamente Infinita (Econômica)</td>
+              <td data-label="Parâmetro Acadêmico">Expansão (Escalabilidade)</td>
+              <td data-label="Fortemente Acoplado">Vertical (Custosa, Limitada pelo Hardware)</td>
+              <td data-label="Fracamente Acoplado">Horizontal (Extremamente Econômica)</td>
             </tr>
             <tr>
-              <td data-label="Característica">Tolerância a Falhas</td>
-              <td data-label="Fortemente Acoplado">Baixa (falha geral se a memória parar)</td>
-              <td data-label="Fracamente Acoplado">Alta (Isolamento de falhas)</td>
+              <td data-label="Parâmetro Acadêmico">Resiliência (Tolerância a Falhas)</td>
+              <td data-label="Fortemente Acoplado">SPOF (Baixa / Crítica)</td>
+              <td data-label="Fracamente Acoplado">Isolada e Redundante (Alta)</td>
             </tr>
             <tr>
-              <td data-label="Característica">Casos de Uso</td>
-              <td data-label="Fortemente Acoplado">Renderização, Games, Workstations</td>
-              <td data-label="Fracamente Acoplado">Nuvem, Banco de Dados Distribuído, IA</td>
+              <td data-label="Parâmetro Acadêmico">Exemplos Práticos </td>
+              <td data-label="Fortemente Acoplado">Mainframes modernos, Workstations 3D</td>
+              <td data-label="Fracamente Acoplado">Hadoop, Nuvem AWS/Azure, Data Lakes</td>
             </tr>
           </tbody>
         </table>
