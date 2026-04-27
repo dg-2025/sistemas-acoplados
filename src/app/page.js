@@ -3,8 +3,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import BackgroundWrapper from '@/componentes/Background/BackgroundWrapper';
 
-
-import SlideQRCodes from '@/componentes/Slides/SlideQRCodes/SlideQRCodes';
+import SlideQRCodes from '@/componentes/Slides/SlideQRCodes'; 
 import Slide1 from '@/componentes/Slides/Slide1';
 import Slide2 from '@/componentes/Slides/Slide2';
 import Slide3 from '@/componentes/Slides/Slide3';
@@ -18,9 +17,9 @@ import Slide10 from '@/componentes/Slides/Slide10';
 import Slide11 from '@/componentes/Slides/Slide11';
 import Slide12 from '@/componentes/Slides/Slide12';
 
-
-const slides = [
-  SlideQRCodes, 
+// Array com TODOS os slides originais
+const todosOsSlides = [
+  SlideQRCodes,
   Slide1, 
   Slide2, 
   Slide3, 
@@ -36,13 +35,26 @@ const slides = [
 ];
 
 export default function Home() {
+  const [slides, setSlides] = useState([]);
   const [slideAtivo, setSlideAtivo] = useState(0);
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
 
+  // Lógica de Filtro Mobile: Executa assim que a página carrega
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // Se for celular, remove o SlideQRCodes (que é o índice 0) da lista
+      setSlides(todosOsSlides.slice(1));
+    } else {
+      // Se for desktop/telão, mantém a lista completa
+      setSlides(todosOsSlides);
+    }
+  }, []);
+
   const proximoSlide = useCallback(() => {
     setSlideAtivo((prev) => (prev < slides.length - 1 ? prev + 1 : prev));
-  }, []);
+  }, [slides]);
 
   const slideAnterior = useCallback(() => {
     setSlideAtivo((prev) => (prev > 0 ? prev - 1 : prev));
@@ -59,7 +71,6 @@ export default function Home() {
 
   useEffect(() => {
     const handleTouchStart = (e) => {
-      
       if (e.target.closest('.modelo-3d') || e.target.closest('.gamma-grid')) {
         touchStartX.current = null;
         touchStartY.current = null;
@@ -79,7 +90,6 @@ export default function Home() {
       const diffX = touchStartX.current - touchEndX;
       const diffY = touchStartY.current - touchEndY;
 
-      
       if (Math.abs(diffY) > Math.abs(diffX)) return; 
 
       if (Math.abs(diffX) > 50) {
@@ -95,6 +105,9 @@ export default function Home() {
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [proximoSlide, slideAnterior]);
+
+  // Evita tela em branco no primeiro milissegundo de carregamento
+  if (slides.length === 0) return null;
 
   const SlideAtual = slides[slideAtivo];
 
