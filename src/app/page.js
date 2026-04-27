@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import BackgroundWrapper from '@/componentes/Background/BackgroundWrapper';
 
-import SlideQRCodes from '@/componentes/Slides/SlideQRCodes'; 
+import SlideQRCodes from '@/componentes/Slides/SlideQRCodes/SlideQRCodes';
 import Slide1 from '@/componentes/Slides/Slide1';
 import Slide2 from '@/componentes/Slides/Slide2';
 import Slide3 from '@/componentes/Slides/Slide3';
