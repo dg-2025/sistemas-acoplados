@@ -3,7 +3,7 @@ export default function Slide3() {
   return (
     <div className="slide-container layout-standard">
       <div className="glass-panel midia-box">
-         {/* Visual mantido */}
+         {}
          <img src="/Slide 5.jpg" alt="Diagrama de Sistema Fortemente Acoplado" />
       </div>
       <div className="glass-panel">

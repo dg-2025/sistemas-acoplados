@@ -14,14 +14,14 @@ export default function Slide1() {
           Arquitetura, Paralelismo e Escalabilidade
         </p>
 
-        {/* Texto introdutório mais técnico */}
+        {}
         <div className="slide-content" style={{ marginTop: '1rem', maxWidth: '85%', marginLeft: 'auto', marginRight: 'auto' }}>
           <p>
             Nesta apresentação, analisaremos a evolução do paralelismo computacional, abordando os aspectos conceituais, técnicos e aplicações atuais  de arquiteturas fortemente acopladas (tightly coupled), fracamente acopladas (loosely coupled) e os paradigmas de multiprocessamento SMP e AMP.
           </p>
         </div>
 
-        {/* Cards Introdutórios */}
+        {}
         <div className="gamma-grid" style={{ marginTop: '1.5rem' }}>
           <div className="gamma-card" style={{ alignItems: 'center' }}>
             <Network size={32} color="#00E5FF" />

@@ -3,7 +3,7 @@ export default function Slide5() {
   return (
     <div className="slide-container layout-standard">
       <div className="glass-panel midia-box">
-         {/* Visual mantido */}
+         {}
          <img src="/slide 6.png" alt="Diagrama de Computadores em Rede" />
       </div>
       <div className="glass-panel">

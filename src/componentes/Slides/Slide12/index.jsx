@@ -5,7 +5,7 @@ export default function Slide12() {
   return (
     <div className="slide-container layout-reverse">
       <div className="glass-panel midia-box modelo-3d">
-         {/* Visual mantido */}
+         {}
 <VisualizadorGLB
   arquivo="/Snapdragon.glb"
   escala={45.5}

@@ -1,7 +1,8 @@
-
 "use client";
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Center, Environment } from '@react-three/drei';
+import { OrbitControls, useGLTF, Center, Environment, Html } from '@react-three/drei';
+import { useState, useEffect } from 'react';
+import * as THREE from 'three';
 
 function Modelo({ caminhoArquivo, escala }) {
   const { scene } = useGLTF(caminhoArquivo);
@@ -12,19 +13,52 @@ function Modelo({ caminhoArquivo, escala }) {
   );
 }
 
+
+function TouchIndicator() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(false), 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <Html center pointerEvents="none">
+      <div className="mobile-only touch-hint">
+        <div className="touch-icon">👆</div>
+        <span>Toque e arraste para explorar</span>
+      </div>
+    </Html>
+  );
+}
+
 export default function VisualizadorGLB({ arquivo, escala = 1 }) {
   return (
-    <Canvas camera={{ position: [0, 2, 5], fov: 45 }}>
+    
+    
+    <Canvas camera={{ position: [0, 2, 5], fov: 45 }} dpr={[1, 1.5]}>
       <ambientLight intensity={0.6} />
       <directionalLight position={[10, 10, 10]} intensity={1.5} />
       <Environment preset="city" />
+      
       <Modelo caminhoArquivo={arquivo} escala={escala} />
+      <TouchIndicator />
+
       <OrbitControls
         autoRotate
         autoRotateSpeed={1}
         enableZoom={true}
+        enablePan={false} 
         minDistance={1}
         maxDistance={10}
+        enableDamping={true}
+        dampingFactor={0.05} 
+        touches={{
+          ONE: THREE.TOUCH.ROTATE,
+          TWO: THREE.TOUCH.DOLLY_PAN
+        }}
       />
     </Canvas>
   );

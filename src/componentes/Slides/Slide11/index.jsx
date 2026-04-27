@@ -3,7 +3,7 @@ export default function Slide11() {
   return (
     <div className="slide-container layout-standard">
       <div className="glass-panel midia-box">
-         {/* Visual mantido */}
+         {}
          <img src="/slide 9.webp" alt="Comparação Visual entre chips SMP e chips AMP" />
       </div>
       <div className="glass-panel">

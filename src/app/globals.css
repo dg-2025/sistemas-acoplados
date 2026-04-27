@@ -1,4 +1,4 @@
-/* BASE – sem scroll em desktop */
+
 body, html {
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ body, html {
   background-color: transparent;
 }
 
-/* Container principal ocupa a tela inteira sem scroll */
+
 .slide-container {
   display: flex;
   width: 100vw;
@@ -25,7 +25,7 @@ body, html {
 .layout-reverse { flex-direction: row-reverse; }
 .layout-center { justify-content: center; max-width: 1400px; margin: 0 auto; }
 
-/* Painéis com vidro – sem scroll, sem overflow */
+
 .glass-panel {
   flex: 1;
   min-height: 0;
@@ -44,7 +44,7 @@ body, html {
   box-sizing: border-box;
 }
 
-/* Painel de mídia/3D ajustado para não criar overflow */
+
 .glass-panel.midia-box {
   padding: 0.5rem;
   display: flex;
@@ -69,11 +69,11 @@ body, html {
   max-height: 100%;
 }
 
-/* ========== FONTES MAIORES ========== */
+
 .slide-title {
   color: #00E5FF;
   font-family: monospace;
-  font-size: clamp(2rem, 4vw, 3.5rem);   /* aumentado */
+  font-size: clamp(2rem, 4vw, 3.5rem);   
   margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
   border-bottom: 1px solid rgba(0, 229, 255, 0.2);
   padding-bottom: clamp(0.3rem, 1vh, 0.6rem);
@@ -83,7 +83,7 @@ body, html {
 
 .slide-subtitle {
   color: #00FF88;
-  font-size: clamp(1.6rem, 3vw, 2.5rem);  /* aumentado */
+  font-size: clamp(1.6rem, 3vw, 2.5rem);  
   font-family: monospace;
   margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
   word-break: break-word;
@@ -91,16 +91,16 @@ body, html {
 
 .slide-content {
   color: #E2E8F0;
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem); /* aumentado */
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem); 
   line-height: 1.4;
   display: flex;
   flex-direction: column;
-  gap: clamp(0.6rem, 1.5vh, 1rem);       /* mais espaço entre elementos */
+  gap: clamp(0.6rem, 1.5vh, 1rem);       
   word-break: break-word;
   overflow-y: visible;
 }
 
-/* Parágrafos específicos (caso queira mais ajustes) */
+
 .slide-content p {
   margin-bottom: 0.75rem;
 }
@@ -108,7 +108,7 @@ body, html {
 .slide-content strong { color: #00FF88; }
 .slide-content li { margin-left: 1.2rem; }
 
-/* Badge do apresentador */
+
 .presenter-badge {
   position: absolute;
   top: 0.8rem;
@@ -125,7 +125,7 @@ body, html {
   z-index: 20;
 }
 
-/* Grid de cards – flexível e sem estouro */
+
 .gamma-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -147,17 +147,17 @@ body, html {
 
 .gamma-card-title {
   color: #00FF88;
-  font-size: clamp(1.2rem, 1.8vw, 1.6rem); /* aumentado */
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem); 
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
-/* Tabela de comparação – responsiva sem scroll horizontal */
+
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 0.8rem;
-  font-size: clamp(0.9rem, 1.4vw, 1.2rem); /* aumentado */
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem); 
   color: #E2E8F0;
   word-break: break-word;
   table-layout: fixed;
@@ -182,7 +182,7 @@ body, html {
   color: #00FF88;
 }
 
-/* RESPONSIVIDADE: MOBILES E TABLETS – scroll liberado apenas aqui */
+
 @media (max-width: 992px) {
   .slide-container {
     flex-direction: column !important;
@@ -214,7 +214,7 @@ body, html {
   }
 
   .slide-title {
-    font-size: clamp(1.8rem, 6vw, 2.5rem); /* ajustado para mobile */
+    font-size: clamp(1.8rem, 6vw, 2.5rem); 
   }
   .slide-subtitle {
     font-size: clamp(1.4rem, 5vw, 2rem);
@@ -226,7 +226,7 @@ body, html {
     font-size: clamp(1.1rem, 4.5vw, 1.4rem);
   }
 
-  /* Tabela adaptada para mobile - permanece funcional */
+  
   .comparison-table,
   .comparison-table thead,
   .comparison-table tbody,
@@ -269,12 +269,395 @@ body, html {
   }
 }
 
-/* Desktop garantido sem scroll (reforço) */
+
 @media (min-width: 993px) {
   .slide-container {
     overflow: hidden;
   }
   .glass-panel {
     overflow: hidden;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  
+  .slide-container {
+    flex-direction: column !important;
+    height: auto !important; 
+    min-height: 100dvh; 
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    padding: 1.5rem 1rem !important; 
+    gap: 1.5rem !important;
+    justify-content: flex-start !important;
+  }
+
+  
+  .glass-panel {
+    width: 100%;
+    min-height: auto !important;
+    padding: 1.5rem 1.2rem !important;
+    border-radius: 1.2rem;
+    flex: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; 
+  }
+
+  
+  .glass-panel.midia-box {
+    min-height: 35vh !important; 
+    max-height: 45vh;
+    padding: 0 !important;
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.02) !important;
+    order: -1; 
+  }
+
+  .midia-box img {
+    border-radius: 1.2rem;
+    object-fit: contain;
+    padding: 0.5rem;
+  }
+
+  
+  .slide-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem) !important;
+    line-height: 1.15 !important;
+    text-align: left; 
+    border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+  }
+
+  .slide-subtitle {
+    font-size: 1.2rem !important;
+    line-height: 1.4 !important;
+    margin-top: -0.5rem;
+    opacity: 0.9;
+  }
+
+  .slide-content {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important; 
+    gap: 1.2rem !important;
+  }
+
+  
+  .slide-content[style*="0.7rem"] {
+    font-size: 0.65rem !important;
+    line-height: 1.4 !important;
+  }
+
+  
+  .presenter-badge {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    align-self: flex-start; 
+    display: inline-block;
+    font-size: 0.8rem !important;
+    padding: 0.3rem 0.8rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  
+  .gamma-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem !important;
+    padding-bottom: 1.5rem !important; 
+    margin-left: -1.2rem; 
+    margin-right: -1.2rem;
+    padding-left: 1.2rem; 
+    padding-right: 1.2rem;
+    scrollbar-width: none; 
+  }
+  
+  .gamma-grid::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .gamma-card {
+    flex: 0 0 82% !important; 
+    scroll-snap-align: center; 
+    padding: 1.5rem !important;
+    min-height: 200px; 
+    justify-content: flex-start !important;
+  }
+
+  .gamma-card-title {
+    font-size: 1.25rem !important;
+    line-height: 1.3;
+    margin-bottom: 1rem !important;
+  }
+
+  
+  .comparison-table tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem !important;
+    padding: 1.2rem !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 1rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .comparison-table td {
+    display: flex !important;
+    flex-direction: column !important; 
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.4rem !important;
+    padding: 0.8rem 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    font-size: 1rem !important;
+  }
+
+  .comparison-table td:last-child {
+    border-bottom: none !important;
+  }
+
+  
+  .comparison-table td::before {
+    width: 100% !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+    margin-bottom: 0.2rem;
+    color: #00E5FF !important;
+  }
+}
+
+
+
+.desktop-only { display: none !important; }
+.mobile-only { display: block !important; }
+
+@media (max-width: 768px) {
+  
+  
+  .glass-panel.midia-box.modelo-3d {
+    height: 50vh !important; 
+    min-height: 350px;
+    position: relative;
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    box-shadow: inset 0 0 40px rgba(0, 229, 255, 0.05); 
+    margin-bottom: 1rem;
+    touch-action: none; 
+  }
+
+  .touch-hint {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-family: monospace;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    animation: fadeOutHint 4s forwards;
+  }
+
+  @keyframes fadeOutHint {
+    0% { opacity: 0; transform: translateY(10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+  }
+
+  
+  .comparison-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+  }
+
+  .mobile-tech-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mobile-tech-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.6rem;
+  }
+
+  .mobile-tech-header h3 {
+    color: #00E5FF;
+    font-size: 1.1rem;
+    margin: 0;
+    font-family: monospace;
+  }
+
+  .mobile-tech-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .tech-item-forte, .tech-item-fraco {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .tech-item-forte p, .tech-item-fraco p {
+    color: #E2E8F0;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .tech-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(0, 229, 255, 0.15);
+    color: #00E5FF;
+  }
+
+  .tech-badge.fraco {
+    background: rgba(0, 255, 136, 0.15);
+    color: #00FF88;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+  .desktop-only { display: block !important; }
+}
+
+
+
+
+.main-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  
+  .main-wrapper {
+    overflow-y: auto !important;
+    overflow-x: hidden !important; 
+    height: 100dvh !important; 
+  }
+
+  
+  .slide-container {
+    max-width: 100vw;
+    overflow-x: hidden;
+    
+    touch-action: pan-y; 
+  }
+
+  
+  .modelo-3d {
+    touch-action: none !important;
+  }
+}
+
+
+
+@media (max-width: 950px) and (orientation: landscape) {
+  
+  .main-wrapper {
+    height: 100vh !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+  }
+
+  
+  .slide-container {
+    flex-direction: row !important;
+    height: 100vh !important;
+    padding: 3vh 2vw !important;
+    gap: 2vw !important;
+  }
+
+  
+  .glass-panel {
+    flex: 1 1 50% !important; 
+    height: 100% !important;
+    overflow-y: auto !important; 
+    justify-content: flex-start !important; 
+    padding: 4vh 3vw !important;
+  }
+
+  
+  .glass-panel.midia-box {
+    overflow: hidden !important; 
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  
+  .desktop-only { display: block !important; }
+  .mobile-only { display: none !important; }
+
+  
+  .slide-title { font-size: clamp(1.2rem, 3vw, 2rem) !important; margin-bottom: 2vh !important; }
+  .slide-subtitle { font-size: clamp(1rem, 2vw, 1.5rem) !important; margin-bottom: 2vh !important; }
+  .slide-content { font-size: clamp(0.85rem, 1.5vw, 1rem) !important; line-height: 1.4 !important; }
+
+  
+  .comparison-table { 
+    display: table !important; 
+    table-layout: fixed !important; 
+    margin-top: 1rem !important; 
+  }
+  .comparison-table thead { display: table-header-group !important; }
+  .comparison-table tbody { display: table-row-group !important; }
+  
+  .comparison-table tr { 
+    display: table-row !important; 
+    margin: 0 !important; 
+    border: none !important; 
+    background: transparent !important; 
+  }
+  
+  .comparison-table th, .comparison-table td {
+    display: table-cell !important; 
+    padding: 0.5rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    text-align: left !important;
+  }
+  
+  
+  .comparison-table td::before { display: none !important; }
+  
+  
+  .gamma-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 1rem !important;
+    overflow: visible !important;
   }
 }

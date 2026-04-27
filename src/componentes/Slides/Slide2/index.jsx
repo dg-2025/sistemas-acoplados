@@ -24,7 +24,7 @@ export default function Slide2() {
           <div className="gamma-card" style={{ alignItems: 'center', textAlign: 'center' }}>
             <Link2 size={40} color="#00FF88" style={{ marginBottom: '0.8rem' }} />
             <div className="gamma-card-title">O Fator "Acoplamento"</div>
-            <p className="slide-content" style={{ fontSize: '1.5rem' }}>Para que múltiplos processadores cooperem, eles precisam se comunicar. O 'Grau de Acoplamento' define como hardware, memória e Sistema Operacional se integram[cite: 20].</p>
+            <p className="slide-content" style={{ fontSize: '1.5rem' }}>Para que múltiplos processadores cooperem, eles precisam se comunicar. O 'Grau de Acoplamento' define como hardware, memória e Sistema Operacional se integram.</p>
           </div>
         </div>
       </div>

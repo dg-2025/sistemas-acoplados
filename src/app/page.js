@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import BackgroundWrapper from '@/componentes/Background/BackgroundWrapper';
 
+
+import SlideQRCodes from '@/componentes/Slides/SlideQRCodes/SlideQRCodes';
 import Slide1 from '@/componentes/Slides/Slide1';
 import Slide2 from '@/componentes/Slides/Slide2';
 import Slide3 from '@/componentes/Slides/Slide3';
@@ -16,12 +18,27 @@ import Slide10 from '@/componentes/Slides/Slide10';
 import Slide11 from '@/componentes/Slides/Slide11';
 import Slide12 from '@/componentes/Slides/Slide12';
 
-const slides = [Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11, Slide12];
+
+const slides = [
+  SlideQRCodes, 
+  Slide1, 
+  Slide2, 
+  Slide3, 
+  Slide4, 
+  Slide5, 
+  Slide6, 
+  Slide7, 
+  Slide8, 
+  Slide9, 
+  Slide10, 
+  Slide11, 
+  Slide12
+];
 
 export default function Home() {
   const [slideAtivo, setSlideAtivo] = useState(0);
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
 
   const proximoSlide = useCallback(() => {
     setSlideAtivo((prev) => (prev < slides.length - 1 ? prev + 1 : prev));
@@ -31,7 +48,6 @@ export default function Home() {
     setSlideAtivo((prev) => (prev > 0 ? prev - 1 : prev));
   }, []);
 
-  
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') proximoSlide();
@@ -41,27 +57,39 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [proximoSlide, slideAnterior]);
 
-  
   useEffect(() => {
     const handleTouchStart = (e) => {
-      touchStartX.current = e.changedTouches[0].screenX;
-    };
-    const handleTouchEnd = (e) => {
-      touchEndX.current = e.changedTouches[0].screenX;
-      const diff = touchStartX.current - touchEndX.current;
       
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) {
-          
-          proximoSlide();
-        } else {
-          
-          slideAnterior();
-        }
+      if (e.target.closest('.modelo-3d') || e.target.closest('.gamma-grid')) {
+        touchStartX.current = null;
+        touchStartY.current = null;
+        return;
+      }
+      
+      touchStartX.current = e.changedTouches[0].screenX;
+      touchStartY.current = e.changedTouches[0].screenY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (touchStartX.current === null || touchStartY.current === null) return;
+
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+
+      const diffX = touchStartX.current - touchEndX;
+      const diffY = touchStartY.current - touchEndY;
+
+      
+      if (Math.abs(diffY) > Math.abs(diffX)) return; 
+
+      if (Math.abs(diffX) > 50) {
+        if (diffX > 0) proximoSlide();
+        else slideAnterior();
       }
     };
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
     return () => {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
@@ -71,7 +99,7 @@ export default function Home() {
   const SlideAtual = slides[slideAtivo];
 
   return (
-    <main style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
+    <main className="main-wrapper">
       <BackgroundWrapper slideAtivo={slideAtivo} />
 
       <AnimatePresence mode="wait">

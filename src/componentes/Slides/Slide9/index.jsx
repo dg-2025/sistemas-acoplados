@@ -3,7 +3,7 @@ export default function Slide9() {
   return (
     <div className="slide-container layout-standard">
       <div className="glass-panel midia-box">
-         {/* Visual mantido */}
+         {}
          <img src="/slide 7.png" alt="Esquema de Memória Compartilhada por Múltiplas CPUs" />
       </div>
       <div className="glass-panel">
